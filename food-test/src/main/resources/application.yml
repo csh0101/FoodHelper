@@ -24,6 +24,3 @@ dubbo:
     address: nacos://47.94.20.182:8848
   consumer:
     timeout: 4000
-  protocol:
-    name: dubbo
-    port: 20886

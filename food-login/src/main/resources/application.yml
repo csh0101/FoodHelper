@@ -16,10 +16,7 @@ management:
       exposure:
         include: "*"
 dubbo:
-  scan:
-    base-packages: com.csh.food.dubbo.service
   application:
-    architecture:
     name: dubbo-food-login
     id: dubbo-food-login-admin
     qos-enable: false
