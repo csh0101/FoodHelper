@@ -1,0 +1,52 @@
+server:
+  port: 12001
+  servlet:
+    context-path: /common/api/user
+spring:
+  datasource:
+    username: csh0101
+    password: csh031027asdA@
+    url: jdbc:mysql://rm-bp11wwv1bwhf838k21o.mysql.rds.aliyuncs.com:3306/user_common?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      filters: stat
+      async-init: true
+
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: user-common   #本服务的名称
+  cloud:                           #注册到nacos
+    nacos:
+      discovery:
+        server-addr: 47.94.20.182:8848
+        register-enabled: true
+  redis:
+    database: 0
+    host: 47.94.20.182
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 5
+        min-idle: 5
+        max-wait: 5000
+    password: 123456
+token:
+  auth:
+    secretKey: 123456
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

@@ -4,7 +4,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: food-login  #本服务的名称
+    name: food-login-center   #本服务的名称
   cloud:                           #注册到nacos
     nacos:
       discovery:
@@ -17,8 +17,8 @@ management:
         include: "*"
 dubbo:
   application:
+    architecture:
     name: dubbo-food-login
-    id: dubbo-food-login-admin
     qos-enable: false
     qos-accept-foreign-ip: false
   registry:
@@ -26,5 +26,3 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
-  cloud:
-    subscribed-services: ''

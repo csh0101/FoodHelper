@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: food-gateway
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    database: 0
+    host: 47.94.20.182
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 5
+        min-idle: 5
+        max-wait: 5000
+    password: 123456
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+      routes:
+      - id: food_requestratelimiter_route
+        uri: lb://user-common
+        predicates:
+          - Path=/food/common/api/user/**
+        filters:
+          - StripPrefix=1
+#        filters:
+#        - name: RequestRateLimiter
+#          args:
+#            redis-rate-limiter.replenishRate: 10
+#            redis-rate-limiter.burstCapacity: 20
+#            redis-rate-limiter.requestedTokens: 1
+    nacos:
+      server-addr: 47.94.20.182:8848
+      discovery:
+        username: nacos
+        password: csh031027asdA@
+
+server:
+  port: 13001

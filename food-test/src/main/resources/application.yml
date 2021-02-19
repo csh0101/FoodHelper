@@ -17,10 +17,9 @@ management:
 dubbo:
   application:
     name: dubbo-food-test
-    id: dubbo-food-login-admin
     qos-enable: false
     qos-accept-foreign-ip: false
   registry:
     address: nacos://47.94.20.182:8848
   consumer:
-    timeout: 4000
+    timeout: 10000
