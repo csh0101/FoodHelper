@@ -1,11 +1,12 @@
-package com.csh.food.bucket.base.domain.response;
+package com.csh.food.dubbo.base.pic;
 
 import com.csh.food.res.baidu.pic.Baidu_Info;
 import lombok.Data;
 
-@Data
-public class PicAnalysisResponse {
+import java.io.Serializable;
 
+@Data
+public class FoodPicInfoEntity implements Serializable {
     String foodName;
 
     float foodProbability;

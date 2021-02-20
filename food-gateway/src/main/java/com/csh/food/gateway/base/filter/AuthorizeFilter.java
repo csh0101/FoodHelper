@@ -48,9 +48,9 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         }catch (Exception ex){
             return getVoidMono(serverHttpResponse,ResponseCodeEnum.UNKNOWN_ERROR);
         }
-        //从token中取出userId
-        String userId = JWTUtil.getUserInfo(token);
-        ServerHttpRequest mutableReq = serverHttpRequest.mutate().header("userId",userId).build();
+        //从token中取出Name
+        String userName = JWTUtil.getUserInfo(token);
+        ServerHttpRequest mutableReq = serverHttpRequest.mutate().header("userName",userName).build();
         ServerWebExchange mutableExchange = exchange.mutate().request(mutableReq).build();
         return chain.filter(mutableExchange);
     }

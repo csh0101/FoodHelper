@@ -1,24 +1,28 @@
 server:
-  port: 15001
-  servlet:
-    context-path: /common/api/bucket
+  port: 14001
 spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: food-bucket   #本服务的名称
+    name: food-pic   #本服务的名称
   cloud:                           #注册到nacos
     nacos:
       discovery:
         server-addr: 47.94.20.182:8848
-        register-enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 dubbo:
   application:
-    name: food-bucket
+    architecture:
+    name: dubbo-food-pic
     qos-enable: false
     qos-accept-foreign-ip: false
   registry:
     address: nacos://47.94.20.182:8848
-  consumer:
-    timeout: 10000
-    check: false
+  protocol:
+    name: dubbo
+    port: 20880
+

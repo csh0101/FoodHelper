@@ -21,10 +21,16 @@ spring:
           lower-case-service-id: true
           enabled: true
       routes:
-      - id: food_requestratelimiter_route
+      - id: food_user_route
         uri: lb://user-common
         predicates:
           - Path=/food/common/api/user/**
+        filters:
+          - StripPrefix=1
+      - id: food_bucket_route
+        uri: lb://food-bucket
+        predicates:
+          - Path=/food/common/api/bucket/**
         filters:
           - StripPrefix=1
 #        filters:

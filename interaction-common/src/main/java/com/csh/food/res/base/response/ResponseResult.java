@@ -19,10 +19,15 @@ public class ResponseResult<T> {
     public static  ResponseResult success(){
         return new ResponseResult(ResponseCodeEnum.SUCCESS.getCode(),ResponseCodeEnum.SUCCESS.getMessage());
     }
-
+    //http 200
     public static <T> ResponseResult<T> success(T data){
-        return new ResponseResult(ResponseCodeEnum.SUCCESS.getCode(),ResponseCodeEnum.SUCCESS.getMessage(),data);
+        return new ResponseResult(HttpResponseCodeEnum.SUCCESS.getCode(),HttpResponseCodeEnum.SUCCESS.getMessage(),data);
     }
+    //http 500
+    public static <T> ResponseResult<T> error(T data){
+        return new ResponseResult(HttpResponseCodeEnum.FAIL.getCode(),HttpResponseCodeEnum.FAIL.getMessage(),data);
+    }
+
 
     public static ResponseResult error(int code,String msg){
         return new ResponseResult(code,msg);

@@ -24,7 +24,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-public class AuthController {
+public class UserController {
     @Value("${token.auth.secretKey}")
     private String secretKey;
 
