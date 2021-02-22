@@ -4,7 +4,9 @@ import com.csh.food.bucket.base.converter.PicAnalysisConverter;
 import com.csh.food.bucket.base.domain.response.PicAnalysisResponse;
 import com.csh.food.bucket.base.service.FoodTellService;
 import com.csh.food.bucket.constant.PicConst;
+import com.csh.food.dubbo.base.pic.FoodPicInfoEntity;
 import com.csh.food.dubbo.base.service.pic.FoodPicInfoService;
+import com.csh.food.dubbo.base.util.converter.JConverter;
 import com.csh.food.dubbo.base.vo.DVO;
 import com.csh.food.res.base.response.HttpResponseCodeEnum;
 import com.csh.food.res.base.response.ResponseResult;
@@ -36,7 +38,9 @@ public class FoodTellServiceImpl implements FoodTellService {
             return ResponseResult.error(null);
         }
         //TODO 写一个嵌套类的泛型转换器 放在公共包里面
-        List<PicAnalysisResponse> response = PicAnalysisConverter.ETR();
+        List<Object> objs = dvo.getObjList();
+        List<FoodPicInfoEntity> es = JConverter.jesConverter(objs);
+        List<PicAnalysisResponse> response = PicAnalysisConverter.ETR(es);
         return ResponseResult.success(response);
     }
 }
