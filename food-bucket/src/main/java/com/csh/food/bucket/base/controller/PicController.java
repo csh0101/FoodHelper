@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @Slf4j
-public class PicAnalysisController {
+public class PicController {
 
     @Autowired
     FoodTellService foodTellService;

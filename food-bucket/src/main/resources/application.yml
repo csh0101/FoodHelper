@@ -3,6 +3,26 @@ server:
   servlet:
     context-path: /common/api/bucket
 spring:
+  datasource:
+    username: csh0101
+    password: csh031027asdA@
+    url: jdbc:mysql://rm-bp11wwv1bwhf838k21o.mysql.rds.aliyuncs.com:3306/food_?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      filters: stat
+      async-init: true
   main:
     allow-bean-definition-overriding: true
   application:

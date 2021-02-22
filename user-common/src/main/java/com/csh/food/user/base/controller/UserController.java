@@ -84,10 +84,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseResult register(@RequestBody RegisterRequest registerRequest){
-        //注册逻辑校验
-        UserDTO userDTO = RegisterUserConverter.UserDTOConverter(registerRequest);
-        RegisterResponse registerResponse = userService.registerUser(userDTO);
-        return ResponseResult.success(registerResponse);
+        return userService.registerUser(registerRequest);
     }
 
     @PostMapping("/refreshToken")

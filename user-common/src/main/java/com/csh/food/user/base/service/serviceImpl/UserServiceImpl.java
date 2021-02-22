@@ -1,7 +1,9 @@
 package com.csh.food.user.base.service.serviceImpl;
+import com.csh.food.res.base.response.ResponseResult;
 import com.csh.food.user.base.convert.RegisterUserConverter;
 import com.csh.food.user.base.domain.dto.UserDTO;
 import com.csh.food.user.base.domain.entity.UserEntity;
+import com.csh.food.user.base.domain.request.RegisterRequest;
 import com.csh.food.user.base.domain.response.RegisterResponse;
 import com.csh.food.user.base.mapper.UserMapper;
 import com.csh.food.user.base.service.UserService;
@@ -20,16 +22,17 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserCheck userCheck;
     @Override
-    public RegisterResponse registerUser(UserDTO userDTO) {
+    public ResponseResult registerUser(RegisterRequest request ) {
         RegisterResponse registerResponse = new RegisterResponse();
+        UserDTO userDTO = RegisterUserConverter.UserDTOConverter(request);
         UserEntity userEntity = RegisterUserConverter.UserEntityConverter(userDTO);
         if(userCheck.is_Exists(userEntity)){
             registerResponse.setSuccess(false);
             registerResponse.setId(-1);
-        }else{
-            registerResponse.setId(userMapper.userIncr(userEntity));
-            registerResponse.setSuccess(true);
+            return ResponseResult.error(registerResponse);
         }
-        return registerResponse;
+        registerResponse.setId(userMapper.userIncr(userEntity));
+        registerResponse.setSuccess(true);
+        return ResponseResult.success(registerResponse);
     }
 }

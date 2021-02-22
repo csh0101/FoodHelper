@@ -37,7 +37,6 @@ public class FoodTellServiceImpl implements FoodTellService {
             log.info("error info is"+e.getMessage());
             return ResponseResult.error(null);
         }
-        //TODO 写一个嵌套类的泛型转换器 放在公共包里面
         List<Object> objs = dvo.getObjList();
         List<FoodPicInfoEntity> es = JConverter.jesConverter(objs);
         List<PicAnalysisResponse> response = PicAnalysisConverter.ETR(es);

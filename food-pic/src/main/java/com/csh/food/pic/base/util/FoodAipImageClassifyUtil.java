@@ -33,12 +33,9 @@ public class FoodAipImageClassifyUtil {
         String res = ob.get("result").toString();
         List<Baidu_Dish> DishList = new ArrayList<>();
         JSONArray ary = JSON.parseArray(res);
-
         for (Object o : ary) {
-//            Object o = ary.get(i);
-//            JSONObject obj = JSONObject.parseObject(o.toString());
-//            Baidu_Dish dish = JSONObject.parseObject(String.valueOf(obj),Baidu_Dish.class);
-            Baidu_Dish dish = (Baidu_Dish) o;
+            JSONObject obj = JSONObject.parseObject(o.toString());
+            Baidu_Dish dish = JSONObject.parseObject(String.valueOf(obj),Baidu_Dish.class);
             DishList.add(dish);
         }
         return DishConverter.bdDishToEList(DishList);
