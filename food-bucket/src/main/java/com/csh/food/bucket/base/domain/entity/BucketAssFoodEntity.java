@@ -3,8 +3,8 @@ package com.csh.food.bucket.base.domain.entity;
 import lombok.Data;
 
 @Data
-public class FoodEntity {
+public class BucketAssFoodEntity {
     Integer id;
-    String foodName;
-    float foodCalorie;
+    Integer foodId;
+    Integer bucketId;
 }

@@ -23,7 +23,7 @@ public class DruidConfig {
 
     @Value("${spring.datasource.password}")
     private String password;
-    @Value("${spring.datasource.test-druid.driver-class-name}")
+    @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
 
     @Value("${spring.datasource.druid.initial-size}")

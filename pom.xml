@@ -9,11 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>dubbo-common</module>
-        <module>food-login</module>
         <module>food-bucket</module>
         <module>food-pic</module>
         <module>food-compute</module>
-        <module>food-test</module>
         <module>food-gateway</module>
         <module>jwt-common</module>
         <module>interaction-common</module>
